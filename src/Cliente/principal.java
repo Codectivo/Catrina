@@ -87,14 +87,6 @@ public class principal extends javax.swing.JFrame implements ActionListener {
         /******** ESCUCHADOR CUANDO CAMBIAMOS TAMAÑO DE VENTANA PRINCIPAL *******************/
         this.addComponentListener(new ComponentAdapter() {
                     public void componentResized(ComponentEvent e) {
-//                        System.out.println(e.getComponent().getWidth()-100);
-//                        Dimension jpanel_dim = jPanel1.getSize();
-//                        jPanel1.setSize( jpanel_dim.width + 1, jpanel_dim.height + 1);
-//                        
-//                        
-//                        Dimension panMostrar_dim = panMostrar.getSize();
-//                        panMostrar.setSize(panMostrar_dim.width + 1, panMostrar_dim.height + 1);
-//                        repaint();
                         System.out.println(principal.this.jLabel1.getLocation().x);
                         int sum_location = principal.this.jLabel1.getLocation().x + 1;
                         System.out.println(sum_location);
@@ -106,7 +98,6 @@ public class principal extends javax.swing.JFrame implements ActionListener {
     }
 
     public void setUsuario(String txt){
-        //lblUsuario.setText("Bienvenido " + txt);
         lblUsuario.setText("Conversación de Grupo: ");
         nomUsuario = txt;
         setTitle("Bienvenido "+nomUsuario);
@@ -116,8 +107,6 @@ public class principal extends javax.swing.JFrame implements ActionListener {
         nomUsers=datos;
         ponerDatosList(this.lstActivos, nomUsers);
         num_activos = datos.size();
-//        if(datos.size() > 1)
-//            btnEnviar.enable(true);
     }
     
     //Mostrar Mensaje en la Ventana principal
@@ -182,9 +171,6 @@ public class principal extends javax.swing.JFrame implements ActionListener {
             this.llaves_usuarios = val.multiply(val2);
             System.out.println("Valores con  "+val_mult+"  r =" + this.llaves_usuarios);
             this.llave_rondas = this.llaves_usuarios.toString();
-//            if(this.llave_rondas != null){
-//                ventPrivada.setPK(this.llave_rondas.substring(0, 32));
-//            }
         }
     }
     
@@ -489,7 +475,6 @@ public class principal extends javax.swing.JFrame implements ActionListener {
     //Control de los botones y eventos
     @Override
     public void actionPerformed(ActionEvent evt) {
-        //throw new UnsupportedOperationException("Not supported yet.");
         //Enviar mensaje a ventana principal
         if(evt.getSource()==this.btnEnviar || evt.getSource()==this.txtMensaje){
            if("".equals(this.txtMensaje.getText())) {
@@ -501,7 +486,6 @@ public class principal extends javax.swing.JFrame implements ActionListener {
                 }else{
                     //Enviar mensaje
                     String mensaje = txtMensaje.getText();        
-                    //JOptionPane.showMessageDialog(null, mensaje, mensaje, WIDTH);
                     //Encirptar mensaje
                     try {
                         String key_s = principal.this.llave_rondas.substring(0, 32);
@@ -528,7 +512,6 @@ public class principal extends javax.swing.JFrame implements ActionListener {
                     }else{
                         ventPrivada.setAmigo(nomUsers.get(pos));           
                         ventPrivada.setVisible(true);
-//                        ventPrivada.setPK(principal.this.llave_rondas.substring(0, 32));
                     }
                 }else{
                     JOptionPane.showMessageDialog(null, "No existen mas usuarios para chatear");
